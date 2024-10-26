@@ -6,6 +6,7 @@
   "scripts": {
     "prestart": "npm run build",
     "start": "pm2 start src/index.ts --name acudwa-backend",
+    "start:prod": "npm run prestart && pm2 start src/index.ts --name acudwa-backend --env production",
     "dev": "ts-node-dev src/index.ts",
     "build": "tsc",
     "lint": "eslint . --ext .ts,.tsx",
@@ -13,7 +14,6 @@
   },
   "dependencies": {
     "apollo-server": "^3.6.0",
-    "docker": "^0.0.0",
     "express": "^4.17.1",
     "graphql": "^15.5.0",
     "pm2": "^5.1.0",

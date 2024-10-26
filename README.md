@@ -403,4 +403,46 @@ interface CodingStandards {
 - Code review guidelines
 - Release management process
 
+## 12. Production Deployment Steps
+
+### a. Prerequisites
+- Ensure Docker and Docker Compose are installed on the server.
+- Set up environment variables for production in a `.env` file.
+
+### b. Build and Start Containers
+1. Navigate to the `backend` directory.
+2. Run the following command to build and start the containers:
+   ```sh
+   docker-compose -f docker-compose.prod.yml up -d
+   ```
+
+### c. Run Database Migrations
+1. Access the running `web` container:
+   ```sh
+   docker exec -it <web_container_id> sh
+   ```
+2. Run the database migration command:
+   ```sh
+   npm run migrate
+   ```
+
+### d. Seed the Database (if necessary)
+1. Access the running `web` container:
+   ```sh
+   docker exec -it <web_container_id> sh
+   ```
+2. Run the database seeding command:
+   ```sh
+   npm run seed
+   ```
+
+### e. Monitor Logs
+- Use the following command to monitor the logs of the running containers:
+  ```sh
+  docker-compose -f docker-compose.prod.yml logs -f
+  ```
+
+### f. Access the Application
+- Open a web browser and navigate to the server's IP address or domain name on port 8080.
+
 This comprehensive specification provides a solid foundation for building the Anthropic Computer Use Demo Web Application. The modular architecture and extensive documentation ensure scalability and maintainability while meeting security and performance requirements.
