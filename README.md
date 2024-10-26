@@ -29,7 +29,6 @@ The Anthropic Computer Use Demo Web Application (ACUDWA) is a sophisticated web-
 - **API Layer**: GraphQL with Apollo Server
 - **WebSocket Server**: Socket.IO
 - **Process Management**: PM2
-- **VNC Server**: x11vnc with custom middleware
 - **Container Orchestration**: Docker with docker-compose
 
 ### c. Database Design
@@ -444,5 +443,12 @@ interface CodingStandards {
 
 ### f. Access the Application
 - Open a web browser and navigate to the server's IP address or domain name on port 8080.
+
+### g. Install x11vnc Package
+- To install the `x11vnc` package using an alternative method, follow these steps:
+  1. Download the `x11vnc` tarball from a trusted source.
+  2. Extract the tarball to a desired location on your server.
+  3. Add the extracted `x11vnc` binary to your system's PATH or use the full path to the binary when starting the VNC server.
+  4. Update any scripts or configurations to use the alternative installation path for `x11vnc`.
 
 This comprehensive specification provides a solid foundation for building the Anthropic Computer Use Demo Web Application. The modular architecture and extensive documentation ensure scalability and maintainability while meeting security and performance requirements.
