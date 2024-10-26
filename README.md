@@ -1,2 +1,1 @@
-# acudwa
-A repository for the Anthropic Computer Use Demo Web Application
+This repository is empty. Any task executed on it should be considered a new capability and needs to be created.
