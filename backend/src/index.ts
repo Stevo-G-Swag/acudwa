@@ -1,6 +1,6 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-import { createServe.                                r } from 'http';
+import { createServer } from 'http';
 import { Server } from 'socket.io';
 import { typeDefs, resolvers } from './graphql/schema';
 import pm2 from 'pm2';
@@ -20,6 +20,9 @@ apolloServer.start().then(() => {
   httpServer.listen({ port: 4000 }, () => {
     console.log(`Server ready at http://localhost:4000${apolloServer.graphqlPath}`);
   });
+}).catch((error) => {
+  console.error('Error starting Apollo Server:', error);
+  process.exit(1);
 });
 
 io.on('connection', (socket) => {
@@ -31,7 +34,7 @@ io.on('connection', (socket) => {
 
 pm2.connect((err) => {
   if (err) {
-    console.error(err);
+    console.error('Error connecting to PM2:', err);
     process.exit(2);
   }
 
@@ -39,7 +42,11 @@ pm2.connect((err) => {
     script: 'src/index.ts',
     name: 'acudwa-backend',
   }, (err) => {
+    if (err) {
+      console.error('Error starting PM2 process:', err);
+      pm2.disconnect();
+      process.exit(2);
+    }
     pm2.disconnect();
-    if (err) throw err;
   });
 });

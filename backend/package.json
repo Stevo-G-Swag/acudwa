@@ -4,6 +4,7 @@
   "description": "Backend for Anthropic Computer Use Demo Web Application",
   "main": "src/index.ts",
   "scripts": {
+    "prestart": "npm run build",
     "start": "pm2 start src/index.ts --name acudwa-backend",
     "dev": "ts-node-dev src/index.ts",
     "build": "tsc",

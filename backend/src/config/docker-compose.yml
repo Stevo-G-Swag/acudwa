@@ -8,6 +8,8 @@ services:
       NODE_ENV: production
       DB_HOST: ${DB_HOST}
       REDIS_URL: ${REDIS_URL}
+      ELASTICSEARCH_URL: ${ELASTICSEARCH_URL}
+      INFLUXDB_URL: ${INFLUXDB_URL}
     ports:
       - "8080:8080"
     volumes:
@@ -15,6 +17,8 @@ services:
     depends_on:
       - postgres
       - redis
+      - elasticsearch
+      - influxdb
   postgres:
     image: postgres:14
     environment:
